@@ -2,14 +2,14 @@ import requests
 from uuid import uuid4
 
 class OnlineSms:
-	def __init__(self):
+	def __init__(self) -> None:
 		self.api = "https://api.online-receive-sms.com"
 		self.headers = {
 			"user-agent": "okhttp/4.9.0"
 		}
 		self.token = "g7UqlvemG4xQ56FOK9HeNprNmcJ9Js8f"
 
-	def get_countries_list(self):
+	def get_countries_list(self) -> dict:
 		data = {
 			"token_auth": f"token{self.token}token"
 		}
@@ -18,7 +18,7 @@ class OnlineSms:
 			data=data,
 			headers=self.headers).json()
 
-	def get_random_number(self):
+	def get_random_number(self) -> dict:
 		data = {
 			"token_auth": f"token{self.token}token"
 		}
@@ -27,7 +27,7 @@ class OnlineSms:
 			data=data,
 			headers=self.headers).json()
 
-	def get_numbers_list(self, size: int = 5):
+	def get_numbers_list(self, size: int = 5) -> dict:
 		data = {
 			"token_auth": f"token{self.token}token"
 		}
@@ -36,7 +36,10 @@ class OnlineSms:
 			data=data,
 			headers=self.headers).json()
 
-	def get_number_messages(self, number: int, size: int = 50):
+	def get_number_messages(
+			self,
+			number: int,
+			size: int = 50) -> dict:
 		data = {
 			"token_auth": f"token{self.token}token"
 		}
@@ -45,7 +48,7 @@ class OnlineSms:
 			data=data,
 			headers=self.headers).json()
 
-	def get_numbers_by_country(self, country_code: str):
+	def get_numbers_by_country(self, country_code: str) -> dict:
 		data = {
 			"token_auth": f"token{self.token}token"
 		}
